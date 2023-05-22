@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PreEntrega2VeronReact/static/css/main.a333f744.css",
+    "main.js": "/PreEntrega2VeronReact/static/js/main.3349ec5b.js",
+    "index.html": "/PreEntrega2VeronReact/index.html",
+    "main.a333f744.css.map": "/PreEntrega2VeronReact/static/css/main.a333f744.css.map",
+    "main.3349ec5b.js.map": "/PreEntrega2VeronReact/static/js/main.3349ec5b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a333f744.css",
+    "static/js/main.3349ec5b.js"
+  ]
+}
