@@ -6,13 +6,14 @@ import { CartContext } from '../../context/CartContext';
 import Card from 'react-bootstrap/Card';
 import 'react-toastify/dist/ReactToastify.css';
 const Item = ({ id, title, description, image, price }) => {
-    
+
     const [cantidadAgregada, setCantidadAgregada] = useState(0);
     const { agregarProducto } = useContext(CartContext)
     const handleAgregar = (cantidad) => {
         setCantidadAgregada(cantidad);
+        const subtotal = Math.round(((cantidad * price) + Number.EPSILON) * 100) / 100
         const producto = {
-            id, title, price
+            id, title, price, subtotal
         }
         if (!agregarProducto(producto, cantidad)) {
             toast("Este producto ya se encuentra en tu Carrito", {
@@ -24,12 +25,13 @@ const Item = ({ id, title, description, image, price }) => {
                 draggable: false,
                 progress: undefined,
                 theme: "colored",
-                type: "error"})
-        } 
-            
-        
+                type: "error"
+            })
+        }
+
+
     }
-    
+
     return (
         <div className="col-sm-8 col-md-6 col-lg-4 col-xl-3 mt-1">
             <Card>

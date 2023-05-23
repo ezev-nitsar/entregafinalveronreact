@@ -8,7 +8,8 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const NavBar = () => {
-    const { cantidadProductos } = useContext(CartContext)
+    const { getCantidadProductos } = useContext(CartContext)
+    
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -21,12 +22,12 @@ const NavBar = () => {
                         <Nav.Link as={Link} to="/category/2">Joyas</Nav.Link>
                         <Nav.Link as={Link} to="/category/3">Electrónica</Nav.Link>
                     </Nav>
-                    {cantidadProductos > 0 &&
-                            <Nav>
-                                <Nav.Link as={Link} to="/cart">
-                                    <Button className="bi bi-cart"> {cantidadProductos}</Button>
-                                </Nav.Link>
-                            </Nav>
+                    {getCantidadProductos() > 0 &&
+                        <Nav>
+                            <Nav.Link as={Link} to="/cart">
+                                <Button className="bi bi-cart"> {getCantidadProductos()}</Button>
+                            </Nav.Link>
+                        </Nav>
                     }
                 </Navbar.Collapse>
             </Container>

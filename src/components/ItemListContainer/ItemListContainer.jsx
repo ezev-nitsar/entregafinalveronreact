@@ -34,7 +34,7 @@ const ItemListContainer = ({ greeting }) => {
     return (
         loading
             ?
-            <LoadingComponent aviso={'Cargando productos, por favor espera...'}/>
+            <LoadingComponent aviso={'Cargando productos, por favor espera...'} />
             :
             <div className="container">
                 <h1>{greeting}</h1>

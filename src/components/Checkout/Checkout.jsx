@@ -14,8 +14,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export const Checkout = () => {
     const [cargando, setCargando] = useState(false)
     const [numeroOrden, setNumeroOrden] = useState('')
-    const { cart, total, limpiarCarrito, cantidadProductos } = useContext(CartContext)
+    const { cart, limpiarCarrito, getCantidadProductos, getTotalPedido } = useContext(CartContext)
     const createOrder = async ({ nombre, telefono, email }) => {
+        
         setCargando(true)
         try {
             const objPedido = {
@@ -23,7 +24,7 @@ export const Checkout = () => {
                     nombre, telefono, email
                 },
                 items: cart,
-                total: total,
+                total: getTotalPedido(),
                 date: Timestamp.fromDate(new Date())
             }
             const orderCollection = collection(db, "orders");
@@ -52,7 +53,6 @@ export const Checkout = () => {
         return (
             <>
                 <LoadingComponent aviso={'Se está generando tu pedido, por favor espera...'} />
-                <ToastContainer />
             </>
         )
     }
@@ -62,7 +62,8 @@ export const Checkout = () => {
         )
     }
     return (
-        cantidadProductos > 0
+        
+        getCantidadProductos() > 0
             ?
             <div className='container'>
                 <h1>Revisión y Carga del Pedido</h1>
@@ -80,8 +81,9 @@ export const Checkout = () => {
                         {cart.map(productosCart => <CartItem key={productosCart.id} {...productosCart} />)}
                     </tbody>
                 </Table>
-                <h3>Total del Carrito: ${Math.round((total + Number.EPSILON) * 100) / 100}</h3>
+                <h3>Total del Carrito: ${getTotalPedido()}</h3>
                 <CheckoutForm onConfirm={createOrder} />
+                <ToastContainer/>
             </div>
             :
             <div className="container">
@@ -90,5 +92,6 @@ export const Checkout = () => {
                     <Link to='/' className="btn btn-info">Buscar entre muchos productos geniales</Link>
                 </div>
             </div>
+            
     )
 }

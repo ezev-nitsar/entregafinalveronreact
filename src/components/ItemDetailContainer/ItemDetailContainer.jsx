@@ -9,12 +9,12 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true);
     const [productoExiste, setProductoExiste] = useState(false)
     const { id } = useParams();
-    
+
     useEffect(() => {
         const itemDB = doc(db, 'products', id);
         getDoc(itemDB)
             .then(respuesta => {
-                    if (respuesta.exists()) {
+                if (respuesta.exists()) {
                     const productoConId = { id: respuesta.id, ...respuesta.data() }
                     setProduct(productoConId);
                     setProductoExiste(true);
@@ -34,19 +34,19 @@ const ItemDetailContainer = () => {
             <LoadingComponent aviso={'Cargando producto...'} />
             :
             productoExiste
-            ?
-            <div className="container">
-                <div className="row justify-content-center">
-                    <Item {...product} />
+                ?
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <Item {...product} />
+                    </div>
                 </div>
-            </div>
-            :
-            <div className="container">
-                <div className="row justify-content-center">
-                    <h3>Lo sentimos, el producto que buscas no existe.</h3>
-                    <Link to='/' className="btn btn-info">Buscar entre muchos productos geniales</Link>
+                :
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <h3>Lo sentimos, el producto que buscas no existe.</h3>
+                        <Link to='/' className="btn btn-info">Buscar entre muchos productos geniales</Link>
+                    </div>
                 </div>
-            </div>
     );
 }
 export default ItemDetailContainer;

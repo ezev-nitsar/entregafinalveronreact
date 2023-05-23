@@ -4,35 +4,40 @@ export const CartContext = createContext({
 })
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-    const [cantidadProductos, setCantidadProductos] = useState(0)
-    const [total, setTotal] = useState(0)
     const agregarProducto = (item, cantidad) => {
         if (!productoExiste(item.id)) {
             setCart(anteriores => [...anteriores, { ...item, cantidad }])
-            setTotal(total + (parseFloat(item.price) * cantidad))
-            setCantidadProductos(cantidadProductos + cantidad)
             return true
         } else {
             return false
         }
     }
     const quitarProducto = (idProducto) => {
-        const datosProducto = cart.find(prod => prod.id === idProducto)
-        setCantidadProductos(cantidadProductos - datosProducto.cantidad)
-        setTotal(total - (datosProducto.price * datosProducto.cantidad))
         const nuevoCarrito = cart.filter(prod => prod.id !== idProducto)
         setCart(nuevoCarrito)
     }
     const limpiarCarrito = () => {
         setCart([])
-        setTotal(0)
-        setCantidadProductos(0)
     }
     const productoExiste = (idProducto) => {
         return cart.some(prod => prod.id === idProducto)
     }
+    const getTotalPedido = () => {
+        if (cart.length > 0) {
+            return Math.round(((cart.reduce((prev, act) => prev + act.cantidad * act.price, 0)) + Number.EPSILON) * 100) / 100
+        } else {
+            return 0
+        }
+    }
+    const getCantidadProductos = () => {
+        if (cart.length > 0) {
+            return cart.reduce((prev, act) => prev + act.cantidad, 0)
+        } else {
+            return 0
+        }
+    }
     return (
-        <CartContext.Provider value={{ cart, agregarProducto, quitarProducto, limpiarCarrito, total, cantidadProductos }}>
+        <CartContext.Provider value={{ cart, agregarProducto, quitarProducto, limpiarCarrito, getCantidadProductos, getTotalPedido }}>
             {children}
         </CartContext.Provider>
     )
