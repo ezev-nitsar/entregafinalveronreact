@@ -31,7 +31,7 @@ export const Cart = () => {
                         {cart.map(productosCart => <CartItem key={productosCart.id} {...productosCart} />)}
                     </tbody>
                 </Table>
-                <h3>Total del Carrito: ${Math.round((total + Number.EPSILON) * 100) / 100}</h3>
+                <h3>Total del Pedido: ${Math.round((total + Number.EPSILON) * 100) / 100}</h3>
                 <Link to={'/checkout'} className="btn btn-outline-success w-100">Pasar por Caja</Link>
             </div>)
     }

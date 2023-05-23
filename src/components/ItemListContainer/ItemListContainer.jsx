@@ -13,10 +13,8 @@ const ItemListContainer = ({ greeting }) => {
         var datosBD = null;
         id
             ?
-            //id está seteado, traigo todos los registros donde category_id == id
             datosBD = query(collection(db, 'products'), where('category_id', '==', parseInt(id)))
             :
-            //id no está seteado, traigo todos los productos
             datosBD = collection(db, 'products')
         getDocs(datosBD)
             .then(respuesta => {

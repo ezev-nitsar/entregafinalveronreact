@@ -7,6 +7,8 @@ import { LoadingComponent } from '../LoadingComponent/LoadingComponent'
 import { Congrats } from '../Congrats/Congrats'
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom'
+import { CartItem } from "../CartItem/CartItem"
+import Table from 'react-bootstrap/Table';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Checkout = () => {
@@ -63,7 +65,22 @@ export const Checkout = () => {
         cantidadProductos > 0
             ?
             <div className='container'>
-                <h1>Finalizar Pedido</h1>
+                <h1>Revisión y Carga del Pedido</h1>
+                <Table striped bordered>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Unitario</th>
+                            <th>Subtotal</th>
+                            <th>Quitar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cart.map(productosCart => <CartItem key={productosCart.id} {...productosCart} />)}
+                    </tbody>
+                </Table>
+                <h3>Total del Carrito: ${Math.round((total + Number.EPSILON) * 100) / 100}</h3>
                 <CheckoutForm onConfirm={createOrder} />
             </div>
             :

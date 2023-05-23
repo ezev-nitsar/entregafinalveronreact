@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# SuperVirtual.com
+Este es el proyecto final del Curso de React JS de Ezequiel Verón
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción y abordaje
 
-## Available Scripts
+Se simula una tienda virtual donde se pueden comprar productos de cuatro categorías.\
+Ya desde la página principal, donde se muestran todos los productos, se pueden agregar.\
+los mismos al carrito en la cantidad deseada. Esto es intencional, ya que queremos dar .\
+la mayor flexibilidad al momento de comprar. .\
 
-In the project directory, you can run:
+Cuando hay al menos un producto cargado en el carrito, aparece en la esquina superior derecha .\
+el ícono del carrito con la cantidad total de productos agregados. Eso nos dirige al 'cart', donde .\
+podemos ver la lista de productos adicionados, quitarlos si nos arrepentimos de algunos, y ver el .\
+total de la compra. .\
 
-### `npm start`
+## Acceso a rutas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+En caso de ir a la ruta /item/ e ingresar un id de producto que no existe, la app lo detectará e informará .\
+que el producto no existe y nos invitará a buscar entre los productos disponibles. .\
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Lo mismo sucede si invocamos al /cart o al /checkout sin productos cargados. .\
 
-### `npm test`
+## Productos y Finalización del Pedido
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Los productos son consultados de una base de datos de Firebase en Google Cloud .\
+Al generar una orden, la misma se carga en Firebase según el modelo indicado en el PPT de la entrega final .\
+y se informa al usuario el ID generado .\
 
-### `npm run build`
+## Tecnologías de terceros utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## [Bootstrap] (https://react-bootstrap.github.io/)
+Utilizado para gestionar la visualización del proyecto y la responsividad. .\
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## [Firebase] (https://firebase.google.com/)
+Proveedor de Base de Datos de Google, utilizado para la persistencia de datos del Proyecto. .\
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## [React-Toastify] (https://www.npmjs.com/package/react-toastify)
+Se utiliza para enviar notificaciones de error, en caso de, por ejemplo, perder el acceso a la base de datos .\
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## [React-Router-Dom] (https://reactrouter.com/)
+Router de React para manejar las rutas de la aplicación
