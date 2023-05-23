@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../db/firebase';
+import { LoadingComponent } from '../LoadingComponent/LoadingComponent';
 import ItemList from '.././ItemList/ItemList';
-import { Loading } from '../Loading/Loading';
 
 const ItemListContainer = ({ greeting }) => {
     const [data, setData] = useState([]);
@@ -36,7 +36,7 @@ const ItemListContainer = ({ greeting }) => {
     return (
         loading
             ?
-            <Loading />
+            <LoadingComponent aviso={'Cargando productos, por favor espera...'}/>
             :
             <div className="container">
                 <h1>{greeting}</h1>

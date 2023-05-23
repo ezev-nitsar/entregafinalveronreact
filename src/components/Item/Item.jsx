@@ -1,10 +1,10 @@
-import Card from 'react-bootstrap/Card';
 import { ItemCount } from '../ItemCount/ItemCount';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
+import Card from 'react-bootstrap/Card';
+import 'react-toastify/dist/ReactToastify.css';
 const Item = ({ id, title, description, image, price }) => {
     
     const [cantidadAgregada, setCantidadAgregada] = useState(0);
